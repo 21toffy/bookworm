@@ -1,0 +1,36 @@
+version: '3'
+services:
+  rabbitmq:
+    image: rabbitmq:3.9.7-alpine
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+    volumes:
+      - ./rabbitmq_data:/var/lib/rabbitmq
+    container_name: bookworm_que
+
+    
+  bookwormapi:
+    build:
+      context: .
+    command: >
+      sh -c "
+            python manage.py makemigrations &&
+            python manage.py migrate &&
+             python manage.py runserver 0.0.0.0:8007             
+             "
+    ports:
+      - "8007:8007"
+    restart: always
+    volumes: 
+      - .:/usr/src/app
+    env_file:
+      - .env
+    depends_on:
+      # - mongodb
+      - rabbitmq
+    container_name: bookworm_api
+    

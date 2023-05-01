@@ -1,0 +1,6 @@
+rabbitmq/
+rabbitmq_data/
+mongo/
+*.pyc
+*.pyo
+__pycache__/

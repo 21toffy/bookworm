@@ -1,0 +1,21 @@
+Environment variables sample for BookWorm API
+Django configuration
+SECRET_KEY=<your_secret_key>
+DEBUG=True
+DATABASE_URL=sqlite:///db.sqlite3
+ALLOWED_HOSTS=localhost,127.0.0.1,0.0.0.0
+TIME_ZONE=UTC
+
+MongoDB configuration
+MONGO_HOST=<your_mongo_host>
+MONGO_PORT=<your_mongo_port>
+MONGO_DB=<your_mongo_db>
+MONGO_USERNAME=<your_mongo_username>
+MONGO_PASSWORD=<your_mongo_password>
+MONGO_URI=<your_mongo_uri>
+
+RabbitMQ configuration
+RABBITMQ_HOST=<your_rabbitmq_host>
+RABBITMQ_PORT=<your_rabbitmq_port>
+RABBITMQ_DEFAULT_USER=<your_rabbitmq_username>
+RABBITMQ_DEFAULT_PASS=<your_rabbitmq_password>
