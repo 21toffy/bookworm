@@ -35,7 +35,7 @@ class CreateBookView(APIView):
 
 class BookView(APIView):
     permission_classes = [IsAuthenticated]
-    
+
     def delete(self, request, id):
         # Delete a book by ID
         book_id = str(id)
@@ -77,7 +77,7 @@ def consume_messages():
     connection = pika.BlockingConnection(pika.ConnectionParameters(host=settings.RABBITMQ_HOST))
     channel = connection.channel()
     channel.queue_declare(queue=settings.BOOK_RABBITMQ_QUEUE)
-    channel.basic_consume(queue=settings.BOOK_RABBITMQ_QUEUE, on_message_callback=self.process_message, auto_ack=True)
+    channel.basic_consume(queue=settings.BOOK_RABBITMQ_QUEUE, on_message_callback=process_message, auto_ack=True)
     channel.start_consuming()
     
 def process_message(ch, method, properties, body):
